@@ -1,0 +1,506 @@
+/* 
+========================================= > هذا الموقع تم بنأه على عدت خطوات  < =======================================
+
+1 =========== >  بناءالشريط الي فوق كامل  معى الاوان وتضبيط الخيارات الي فوق 
+
+2 =========== > عمل دروب داون لي اول خيار فوق 
+
+3 =========== > بناء الصفحه الثانيه 
+
+4 =========== > بناء الجزاء الاول من الصفحه الثانيه الي هي الصورتين واالوصف الي علي يسارهم 
+
+5 =========== > بناء الجزء الاخير من الصقحه الثانيه الي هي الاشال السته اخر الصفحه الثانيه 
+
+6 =========== > بناء الصفحه الثالثه 
+
+7 =========== > بناء الصفحه الاخيره 
+
+*/
+
+/* ====================================================================== > 1 < ====================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* ماتخلي الثنتين الي فوق يأثر في العنصر يعني تاخذ من المساحه نفسها  */
+}
+body {
+    font-family: "PT Sans",sans-serif;
+
+}
+header {
+    padding: 30px 0;
+}
+.contenar {
+    width: 80%;
+    margin: auto; /* علشان يخلي الحاجه في النص عشره من اليمين واليسار والثمانين في النص  */
+}
+.list-genral {
+    list-style: none;
+}
+header .hedar-content {
+    display: flex; /* يخلي العناصر جنب بعض  */
+    justify-content: space-between; /* مسافه متساويه بينهم  */
+    align-items: center; /* يخليهم في النص */
+}
+.hedar-content ul li {
+    display:inline-block;
+}
+:root {
+    --mainColor: #7b5244;
+    --subColor: #333333;
+}
+a {
+    text-decoration: none;
+}
+.hedar-content ul li ,
+.hedar-content ul li a {
+    color: var(--subColor);
+}
+
+.hedar-content img {
+    flex: 1;
+    max-width: 170px;
+}
+.hedar-content nav {
+    flex: 3;
+    text-align: center;
+}
+.hedar-content ul .login {
+    flex: 1;
+    text-align: right;
+}
+.hedar-content ul li .link-itme{
+    padding: 10px 24px ;
+    display: block;
+    font-weight: bold;
+    position: relative;
+}
+/*----------------------- بدايه تعديل الازرار ----------------------*/
+.hedar-content ul li .link-itme::before{
+    content: "";
+    position: absolute;
+    border-width: 0 2px;
+    border-color: var(--mainColor);
+    border-style: solid;
+    width: 98%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition:transform 0.3s;
+    transform: scale3d(1 , 0 , 1);
+}
+.hedar-content ul li .link-itme:hover::before{
+    transform: scale3d(1 , 1 , 1);
+}
+.hedar-content ul li .link-itme::after{
+    content: "";
+    position: absolute;
+    border-width: 2px 0px;
+    border-color: var(--mainColor);
+    border-style: solid;
+    width: 100%;
+    height: 91%;
+    top: 0;
+    left: 0;
+    transition:transform 0.2s;
+    transform: scale3d(0 , 1 , 1);
+    transform-origin: left; /* علشان يبدا من اليسار الي هو الون  */
+}
+.hedar-content ul li .link-itme:hover::after{
+    transform: scale3d(1 , 1 , 1);
+    transition-delay: 0.2s; /* اقولها الي البوتين الون ينتضر ثانتين  */
+}
+/*----------------------- نهايه تعديل الازرار ----------------------*/
+.hedar-content .login ul li  {
+    padding: 10px ;
+    font-weight: bold;
+}
+.hedar-content .login ul li:last-child i {
+    position: relative;
+    margin-right: 10px;
+}
+.hedar-content .login ul li:last-child i:after {
+    position: absolute;
+    content: "0";
+    background: var(--mainColor);
+    color: #ffffff;
+    bottom: -15px;
+    right: 76px;
+    border-radius: 50%;
+    padding: 3px;
+    font-size: 15px;
+}
+.img-slide {
+    width: 100%;
+    position: relative;
+}
+.a{
+    width: 100%;
+}
+.last-imag-booton li{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: burlywood;
+    border-radius: 50%;
+    transition:background-color 0.5s ,width 0.5s  ;
+}
+
+.active {
+    border: black 3px solid;
+}
+.last-imag-booton {
+    position: absolute;
+    top: 500px;
+    left: 50%;
+    transform: scale(0);
+    visibility: hidden;
+    opacity: 0;
+    transition: transform 0.5s , visibility 0.5s; 
+}
+.a:hover .last-imag-booton li {
+    visibility: visible;
+}
+.last-imag-booton li:hover {
+    background-color: chocolate;
+    width: 15px;
+}
+.img-slide:hover .last-imag-booton {
+    visibility: visible;
+    transform: scale(1);
+    opacity: 1;
+}
+/* ====================================================================== > 2 < ====================================================================== */
+.drobdone {
+    position: relative;
+}
+.drobdone-menu {
+    position: absolute;
+    width: 450px;
+    border: 2px solid var(--mainColor);
+    padding: 15px;
+    margin-top: 5px;
+    background: #ffffff;
+    z-index: 1;
+    transform: scale(0); /* علشان اخفي الجدول وايذا اشرت عليه يضهر */
+    visibility: hidden; /* علشان ايذا جيت احدث الصفحه يبن مثل ماتقول يتقلص فانا اخفيه تماما */
+    opacity: 0; /* يوم ضفت الفسيبلتي في الي تحت بدا يضهر مثل المشكله السابقه الي هي التقلص فاخفيه نهائي واضهره تحت */
+    transition: transform 0.5s , visibility 0.5s;
+}
+.drobdone:hover .drobdone-menu {
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+}
+.drobdone-menu ul {
+    display: table-cell;  /* علشان يخليها مثل الجدول  */
+    text-align: left;
+}
+.drobdone-menu ul li:first-child a {
+    display: block;
+    margin-bottom: 10px;
+    border-bottom: 1px dotted var(--mainColor);
+}
+.drobdone-menu ul li {
+    line-height: 1.7; /* المساحه بين العناصر الي هي داخل الجدول بين كل عنصر */
+}
+/* ====================================================================== > 3 < ====================================================================== */
+.section-padding {
+    padding: 40px 0;
+}
+.section-headr {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.section-headr .line {
+    display: block;
+    width: 100px;
+    margin: auto;
+    height: 5px;
+    background: var(--mainColor);
+    transition: width 0.5s;
+}
+.section-headr:hover .line {
+    width: 250px;
+}
+.categroy-itms {
+    display: grid;
+    grid-template-columns: auto auto auto auto; /* علشان عندي اربع صوره احط على قد الصور الي ابي  */
+    grid-gap: 20px; /* علشان اخلي مساحه بينهم من اليمين واليسار  */
+}
+.a {
+    position: relative;
+}
+.categroy-itms img {
+    width: 100%;
+    margin-bottom: 20px; /* مسافه بين الصوره والي تحت مباشره  */
+}
+
+.h3-a{
+    color: gray;
+    font-weight: normal;
+}
+.a .icon {
+    width: 30px;
+    height: 30px;
+    background: var(--mainColor);
+    color: #ffffff;
+    display: block;
+    text-align: center;
+    line-height: 30px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s;
+}
+.a:hover .icon {
+    visibility: visible;
+    opacity: 1;
+}
+.botn-categroy {
+    width: 100%;
+}
+.botn-a{
+    top: 500px;
+    left: 50%;
+    text-align: center;
+    margin-top: 30px;
+}
+.botn-a li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: burlywood;
+    border-radius: 50%;
+    transition: width 0.5s , background-color 0.5s ;
+}
+.botn-setnges li:hover {
+    background-color: chocolate;
+    width: 15px;
+    height: 12px;
+}
+/* ====================================================================== > 4 < ====================================================================== */
+.discount{
+    margin: 30px 0 ;
+    display: flex;
+}
+.discount-desc {
+    flex: 2;
+    background: #f7f3f7;
+    padding: 20px;
+    position: relative;
+}
+.discount-itme {
+    flex: 1;
+    height: 300px;
+    position: relative;
+}
+.discount-info {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+}
+.discount-info h3 {
+    font-weight: normal; 
+    color: var(--mainColor);
+}
+.discount-info h2 {
+    font-size: 20px;
+}
+.discount-desc .top + p {
+    /* للعلم الزايد الي فوق عطني البرقراف الي معى التوب اخو التوب  */
+    line-height: 1.7; /* الخطوط تبعد عن بعضها  */
+}
+.discount-desc .bolletes span {
+    display: inline-block;
+    width: 50px;
+    height: 2px;
+    background: var(--mainColor);
+    margin-left: 10px;
+}
+.discount-desc .bolletes {
+    text-align: right;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+.discount-desc .top {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 20px;
+}
+.discount-desc .top .icon {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-size: 50px;
+    color: var(--mainColor);
+}
+.discount-itme img {
+    width: 100%;
+    height: 100%;
+}
+.discount-itme:nth-child(2){
+    /*background-image: url(images/cms-banner-1.jpg);*/
+    background-size: cover; /* علشان يملئ الصفحه */
+    margin: 0 20px;
+    transition: transform 0.3s;
+}
+.discount-itme:nth-child(2):hover,
+.discount-itme:nth-child(3):hover {
+    transform: scale(1.1);
+}
+.discount-itme:nth-child(3){
+    /* background-image: url(images/cms-banner-2.jpg); */
+    background-size: cover; /* علشان يملئ الصفحه */
+    margin: 0 20px;
+    transition: transform 0.3s;
+}
+/* ====================================================================== > 5 < ====================================================================== */
+.sprites {
+    display: flex;
+    margin-bottom: 55px;
+}
+.sprite-itmes {
+    flex: 1; /* علشان ياخذو نفس المساحه  */
+    text-align: center;
+    border-right: 1px solid var(--mainColor);
+}
+.sprite-itmes:last-child {
+    border: 0; /* حذف الخط الي على اليسار ماله لزوم  */
+}
+.sprite-info h3 {
+    font-size: 17px;
+}
+.sprite-info span {
+    color: gray;
+    font-size: 15px;
+}
+.sprite-icon {
+    background-image: url(images/service-icon.png);
+    height: 55px;
+    background-repeat: no-repeat; /* علشان مايكرر الصوره  */
+}
+.sprite-icon-1 {
+    background-position: center 5px;
+}
+.sprite-itmes:hover .sprite-icon-1 {
+    background-position: center -86px;
+    transition: all 0.5s;
+}
+.sprite-icon-2 {
+    background-position: center -180px;
+}
+.sprite-itmes:hover .sprite-icon-2 {
+    background-position: center -273px;
+    transition: all 0.5s;
+} 
+.sprite-icon-3 {
+    background-position: center -366px;
+}
+.sprite-itmes:hover .sprite-icon-3 {
+    background-position: center -455px;
+    transition: all 0.5s;
+}
+.sprite-icon-4 {
+    background-position: center -549px;
+}
+.sprite-itmes:hover .sprite-icon-4 {
+    background-position: center -639px;
+    transition: all 0.5s;
+}
+.sprite-icon-5 {
+    background-position: center -734px;
+}
+.sprite-itmes:hover .sprite-icon-5 {
+    background-position: center -826px;
+    transition: all 0.5s;
+}
+/* ====================================================================== > 6 < ====================================================================== */
+.product-lists {
+    display: flex;
+    justify-content: center;
+}
+.product-lists li {
+    margin: 10px 20px;
+}
+.product-img {
+    position: relative;
+}
+.productt-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0); /*  انا سويت صوره عايديه داخلها صوره فيها عناوين اخفيها وايذا سويت هافر تضهر الصوره شوف سطر 500 */
+    transition: transform 0.3s;
+}
+.productt-overlay ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,50%);
+
+}
+.productt-overlay ul li {
+    width: 40px;
+    height: 40px;
+    background:var(--mainColor);
+    display: inline-block;
+    text-align: center;
+}
+.productt-overlay ul li i {
+    color: #ffffff;
+    line-height: 40px;
+}
+.product-itme:hover .productt-overlay {
+    transform: scaleX(1);
+}
+.product-itmes {
+    display: grid;
+    grid-template-columns:repeat(3,1fr); /* خليهم ثلاث ولهم نفس المسافه  */
+    grid-gap: 20px; /* المسسافه الي بينهم */
+    margin: 30px;
+}
+/* ====================================================================== > 7 < ====================================================================== */
+.msafh {
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+.footer-a {
+    flex: 1;
+}
+.footer-b {
+    flex: 1;
+}
+.footer-c {
+    flex: 1;
+}
+.the-end {
+    background: rgb(0, 0, 0);
+    width: 100%;
+    height: 500px;
+    padding: 60px 0;
+    text-align: center;
+
+}
+.img-footer img{
+    color: white;
+}
+
+.footer-a p ,.msafh h3 {
+    color: white;
+    margin: 40px 0;
+    
+}
+.the-end h4 {
+    color: gray;
+    font-size: 15px;
+    line-height: 30px;
+}
